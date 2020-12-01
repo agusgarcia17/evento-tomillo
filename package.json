@@ -1,0 +1,22 @@
+{
+  "name": "evento",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agusgarcia17/evento-tomillo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agusgarcia17/evento-tomillo/issues"
+  },
+  "homepage": "https://github.com/agusgarcia17/evento-tomillo#readme",
+  "dependencies": {
+    "sweetalert": "^2.1.2"
+  }
+}

@@ -1,31 +1,9 @@
-function timer(){
-    var countDownDate = new Date("Dec 3, 2020 13:43:00").getTime();
+// let btnIniciar = document.getElementById("btnIniciar")
+// btnIniciar.onclick =()=> setInterval(updateCountdown, 1000)
 
-    // Update the count down every 1 second
-    var x = setInterval(function() {
-    
-      // Get today's date and time
-      var now = new Date().getTime();
-        
-      // Find the distance between now and the count down date
-      var distance = countDownDate - now;
-        
-      // Time calculations for days, hours, minutes and seconds
-      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        
-      // Output the result in an element with id="demo"
-      document.getElementById("timer").innerHTML = minutes + "m " + seconds + "s ";
-        
-      // If the count down is over, write some text 
-      if (distance < 0 || count ===3) {
-        clearInterval(x);
-        document.getElementById("timer").innerHTML = "TIEMPO TERMINADO";
-        document.querySelector(".codigos").style.display = "none"
-        document.querySelector(".btn").style.display = "none"
-      }
-    }, 1000);
-}
+const timer = document.getElementById("timer") 
+const startingMinutes = 30
+let time = startingMinutes * 60
 
 
 let one = document.getElementById("one")
@@ -38,23 +16,57 @@ let count = 0
 let btn = document.getElementById("btnEnviar")
 btn.onclick = () => checkCode()
 
+setInterval(updateCountdown, 1000)
+
+function updateCountdown(){
+  const minutes = Math.floor(time/60);
+  let seconds = time % 60 
+  
+  if((minutes < 0 && seconds < 0) || count === 3){
+    timer.textContent = `HAN PERDIDO`;
+    btn.classList.add("disabled")
+  } else {
+    timer.textContent = `${minutes}:${seconds < 10 ? "0" + seconds : seconds}`
+    time--  
+  }
+}
+ 
 function checkCode(){
-    
     let oculto = 5083  
     let codigo = parseInt(one.value + two.value + three.value + four.value)
-    
-    
+          
     if(oculto === codigo) {
-        alert("SE HAN SALVADO")
+      swal("FELICITACIONES, SALVARON A LOS CODERS DEL FUTURO", {
+        content: {
+          element: "img",
+          attributes: {
+            src: "https://media.giphy.com/media/2sXf9PbHcEdE1x059I/giphy.gif", 
+          },
+        },
+      });
         count = 0
     } else {
-        alert(`Codigo incorrecto, tienes ${3 - count} intentos`)
-        count++
+      count ++
+        switch (count) {
+          case 1:
+            swal(`CODIGO INCORRECTO, CUIDADO TE QUEDAN DOS INTENTOS`);
+          break;
+          case 2:
+            swal(`CODIGO INCORRECTO DE NUEVO, TE QUEDA UN SOLO INTENTO`);
+          break;
+          case 3:
+            swal(`HAN PERDIDO, GANARON LOS HACKERS`, {
+              content: {
+                element: "img",
+                attributes: {
+                  src: "https://www.clipartkey.com/mpngs/m/135-1351670_squidward-is-a-loser-clipart-png-download-squidward.png", 
+                },
+              },
+            }); 
+          break;  
+        } 
     } 
-    
 }
-
-timer()
 
 
 
