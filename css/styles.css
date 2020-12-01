@@ -1,0 +1,23 @@
+.code {
+  height: 200px;
+  width: 200px;
+  margin: 10px;
+  font-size: 5rem;
+  text-align: center;
+}
+
+.codigos {
+  display: flex;
+  justify-content: center;
+}
+
+#timer {
+  font-size: 5rem;
+}
+
+.qr {
+  width: 200px;
+  height: 200px;
+}
+
+/*# sourceMappingURL=styles.css.map */
