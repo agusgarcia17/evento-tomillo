@@ -31,11 +31,20 @@ function updateCountdown() {
   }
 }
 
+var error = document.getElementById("error"); 
+var failure = document.getElementById("failure"); 
+var winner = document.getElementById("winner"); 
+
+function playAudio(a) { 
+  a.play(); 
+}
+
 function checkCode() {
   let oculto = 5083
   let codigo = parseInt(one.value + two.value + three.value + four.value)
 
   if (oculto === codigo) {
+    playAudio(winner)
     swal("FELICITACIONES, SALVARON A LOS CODERS DEL FUTURO", {
       content: {
         element: "img",
@@ -49,12 +58,27 @@ function checkCode() {
     count++
     switch (count) {
       case 1:
-        swal(`CODIGO INCORRECTO, CUIDADO TE QUEDAN DOS INTENTOS`);
+        playAudio(error)
+        swal({
+          title: "ERROR",
+          text: "CODIGO INCORRECTO, CUIDADO TE QUEDAN DOS INTENTOS",
+          icon: "error",
+          button: "Intentar de nuevo",
+        });
+        
+        // swal(`CODIGO INCORRECTO, CUIDADO TE QUEDAN DOS INTENTOS`);
         break;
       case 2:
-        swal(`CODIGO INCORRECTO DE NUEVO, TE QUEDA UN SOLO INTENTO`);
+        playAudio(error)
+        swal({
+          title: "ERROR",
+          text: "CODIGO INCORRECTO, CUIDADO TE QUEDA UN SOLO INTENTO",
+          icon: "error",
+          button: "Intentar de nuevo",
+        });
         break;
       case 3:
+        playAudio(failure)
         swal(`HAN PERDIDO, GANARON LOS HACKERS`, {
           content: {
             element: "img",
