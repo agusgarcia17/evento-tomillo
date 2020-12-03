@@ -2,7 +2,7 @@
 // btnIniciar.onclick =()=> setInterval(updateCountdown, 1000)
 
 const timer = document.getElementById("timer")
-const startingMinutes = 30
+const startingMinutes = 20
 let time = startingMinutes * 60
 
 
