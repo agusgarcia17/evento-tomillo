@@ -1,5 +1,5 @@
-// let btnIniciar = document.getElementById("btnIniciar")
-// btnIniciar.onclick =()=> setInterval(updateCountdown, 1000)
+let btnIniciar = document.getElementById("inicio")
+btnIniciar.onclick =()=> setInterval(updateCountdown, 1000)
 
 const timer = document.getElementById("timer")
 const startingMinutes = 20
@@ -16,7 +16,7 @@ let count = 0
 let btn = document.getElementById("btnEnviar")
 btn.onclick = () => checkCode()
 
-setInterval(updateCountdown, 1000)
+// setInterval(updateCountdown, 1000)
 
 function updateCountdown() {
   const minutes = Math.floor(time / 60);
